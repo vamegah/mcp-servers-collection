@@ -1,0 +1,25 @@
+{
+  "name": "mcp-servers-collection",
+  "version": "0.1.0",
+  "description": "A collection of Model Context Protocol (MCP) servers for AI assistant integration",
+  "keywords": ["mcp", "ai", "assistant", "huggingface", "obsidian", "media", "ffmpeg"],
+  "homepage": "https://github.com/yourusername/mcp-servers-collection",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mcp-servers-collection.git"
+  },
+  "license": "MIT",
+  "author": "Your Name <your.email@example.com>",
+  "scripts": {
+    "test": "node test-quick.js",
+    "test:full": "python test-servers.py",
+    "install:all": "cd mcp-server-obsidian && npm install && cd ../mcp-server-media && npm install && cd ../mcp-server-huggingface && pip install -e .",
+    "start:obsidian": "cd mcp-server-obsidian && npm start",
+    "start:media": "cd mcp-server-media && npm start",
+    "start:huggingface": "cd mcp-server-huggingface && python -m mcp_server_huggingface.server"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.8.0"
+  }
+}

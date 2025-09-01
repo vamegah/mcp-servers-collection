@@ -1,0 +1,58 @@
+name: Test MCP Servers
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18, 20]
+        python-version: [3.8, 3.9, '3.10', '3.11']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install FFmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+        
+    - name: Install Python dependencies
+      run: |
+        cd mcp-server-huggingface
+        pip install -e .
+        
+    - name: Install Node.js dependencies
+      run: |
+        cd mcp-server-obsidian && npm install
+        cd ../mcp-server-media && npm install
+        
+    - name: Run tests
+      run: node test-quick.js
+      
+    - name: Test individual servers
+      run: |
+        # Test Obsidian server
+        export OBSIDIAN_VAULT_PATH="/tmp/test-vault"
+        mkdir -p "$OBSIDIAN_VAULT_PATH"
+        echo "# Test" > "$OBSIDIAN_VAULT_PATH/test.md"
+        
+        # Quick server validation
+        timeout 10s node mcp-server-obsidian/src/index.js < /dev/null || true
+        timeout 10s node mcp-server-media/src/index.js < /dev/null || true

@@ -1,0 +1,61 @@
+{
+  "server": {
+    "name": "mcp-server-media",
+    "version": "0.1.0",
+    "max_retries": 3,
+    "timeout_ms": 300000
+  },
+  "ffmpeg": {
+    "path": "ffmpeg",
+    "timeout_ms": 300000,
+    "max_file_size_mb": 1000,
+    "supported_video_formats": ["mp4", "webm", "mov", "avi", "mkv"],
+    "supported_audio_formats": ["mp3", "wav", "aac", "flac"]
+  },
+  "image_processing": {
+    "max_file_size_mb": 100,
+    "supported_formats": ["jpg", "jpeg", "png", "webp", "avif", "tiff"],
+    "max_dimensions": {
+      "width": 8000,
+      "height": 8000
+    },
+    "quality_limits": {
+      "min": 1,
+      "max": 100
+    }
+  },
+  "batch_processing": {
+    "max_concurrent_jobs": 3,
+    "max_files_per_batch": 1000,
+    "job_retention_hours": 24,
+    "progress_update_interval_ms": 1000
+  },
+  "presets": {
+    "web_optimized": {
+      "width": 1280,
+      "format": "webp",
+      "quality": 85
+    },
+    "social_media": {
+      "width": 1080,
+      "height": 1080,
+      "format": "jpg",
+      "quality": 90
+    },
+    "thumbnail": {
+      "width": 320,
+      "height": 240,
+      "format": "jpg",
+      "quality": 75
+    },
+    "high_quality": {
+      "format": "png",
+      "quality": 95
+    }
+  },
+  "logging": {
+    "level": "info",
+    "file": "media-server.log",
+    "max_size_mb": 20
+  }
+}

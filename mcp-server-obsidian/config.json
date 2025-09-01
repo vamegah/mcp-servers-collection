@@ -1,0 +1,37 @@
+{
+  "server": {
+    "name": "mcp-server-obsidian",
+    "version": "0.1.0",
+    "max_retries": 3,
+    "timeout_ms": 15000
+  },
+  "vault": {
+    "max_file_size_mb": 50,
+    "supported_extensions": [".md", ".canvas"],
+    "backup_on_modify": false,
+    "watch_for_changes": false
+  },
+  "dataview": {
+    "max_results": 1000,
+    "query_timeout_ms": 5000,
+    "cache_results": true,
+    "supported_queries": ["TABLE", "LIST", "TASK"]
+  },
+  "canvas": {
+    "max_nodes_per_canvas": 500,
+    "default_node_width": 250,
+    "default_node_height": 60,
+    "auto_layout": false
+  },
+  "search": {
+    "max_results": 100,
+    "case_sensitive": false,
+    "include_content": true,
+    "excerpt_length": 200
+  },
+  "logging": {
+    "level": "info",
+    "file": "obsidian-server.log",
+    "max_size_mb": 5
+  }
+}

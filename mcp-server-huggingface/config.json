@@ -1,0 +1,30 @@
+{
+  "server": {
+    "name": "mcp-server-huggingface",
+    "version": "0.1.0",
+    "max_retries": 3,
+    "timeout_ms": 30000
+  },
+  "huggingface": {
+    "api_base_url": "https://api-inference.huggingface.co",
+    "hub_base_url": "https://huggingface.co",
+    "cache_size": 100,
+    "max_model_size_mb": 2048,
+    "default_inference_timeout": 10000
+  },
+  "local_inference": {
+    "max_loaded_models": 3,
+    "torch_device": "auto",
+    "torch_dtype": "float16",
+    "max_memory_per_model_gb": 4
+  },
+  "rate_limits": {
+    "api_calls_per_minute": 60,
+    "inference_calls_per_minute": 30
+  },
+  "logging": {
+    "level": "info",
+    "file": "huggingface-server.log",
+    "max_size_mb": 10
+  }
+}

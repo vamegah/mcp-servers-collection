@@ -1,0 +1,34 @@
+{
+  "name": "mcp-server-media",
+  "version": "0.1.0",
+  "description": "MCP Server for media processing with FFmpeg and ImageMagick",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "glob": "^10.4.5",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.24",
+    "@types/node": "^20.0.0"
+  },
+  "bin": {
+    "mcp-server-media": "./src/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "ffmpeg",
+    "imagemagick",
+    "media",
+    "video",
+    "image"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
